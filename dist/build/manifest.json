@@ -1,0 +1,104 @@
+{
+  "resources/js/app.js": {
+    "file": "assets/app.f193ef28.js",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/views/main/index.vue",
+      "resources/js/views/main/product/index.vue",
+      "resources/js/views/main/product/Show.vue",
+      "resources/js/views/cart/Index.vue",
+      "resources/js/views/wishlist/Index.vue",
+      "resources/js/views/users/Registration.vue",
+      "resources/js/views/users/MyAccount.vue",
+      "resources/js/views/compare/Index.vue",
+      "resources/js/views/notification/SuccessOrder.vue",
+      "resources/js/views/users/Login.vue"
+    ]
+  },
+  "resources/js/views/main/index.vue": {
+    "file": "assets/index.9564cb96.js",
+    "src": "resources/js/views/main/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/main/product/index.vue": {
+    "file": "assets/index.b83b121c.js",
+    "src": "resources/js/views/main/product/index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/main/product/Show.vue": {
+    "file": "assets/Show.4a264b77.js",
+    "src": "resources/js/views/main/product/Show.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/cart/Index.vue": {
+    "file": "assets/Index.4b352994.js",
+    "src": "resources/js/views/cart/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/wishlist/Index.vue": {
+    "file": "assets/Index.a8814e40.js",
+    "src": "resources/js/views/wishlist/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/users/Registration.vue": {
+    "file": "assets/Registration.0e3181d1.js",
+    "src": "resources/js/views/users/Registration.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/users/MyAccount.vue": {
+    "file": "assets/MyAccount.b7add347.js",
+    "src": "resources/js/views/users/MyAccount.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/compare/Index.vue": {
+    "file": "assets/Index.3bb62f00.js",
+    "src": "resources/js/views/compare/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/notification/SuccessOrder.vue": {
+    "file": "assets/SuccessOrder.6cc300c6.js",
+    "src": "resources/js/views/notification/SuccessOrder.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/users/Login.vue": {
+    "file": "assets/Login.9abe2288.js",
+    "src": "resources/js/views/users/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/sass/app.scss": {
+    "file": "assets/app.67dcdfd2.css",
+    "src": "resources/sass/app.scss",
+    "isEntry": true
+  }
+}
