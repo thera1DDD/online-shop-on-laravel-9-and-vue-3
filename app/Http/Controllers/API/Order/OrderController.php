@@ -55,7 +55,7 @@ class OrderController extends Controller
                 ],
                 [
                     'name' => 'caption',
-                    'contents' => 'Клиент: ' . $data['username'] . "\nНомер телефона: " . $data['phone_number'] . "\nСумма: " .$data['total'] .'₽',
+                    'contents' => 'Заказ № ' . $order->id . "\nКлиент: " . $data['username'] . "\nНомер телефона: " . $data['phone_number'] . "\nСумма: " .$data['total'] .'₽',
                 ],
             ],
         ]);

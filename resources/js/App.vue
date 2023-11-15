@@ -25,7 +25,7 @@
             </div>
             <div class="menu-closer"></div>
             <div class="mobile-menu__sidebar-menu">
-              <div class="menu-closer two"> <span>Закрыть</span> <span class="cross"><i
+              <div class="menu-closer two"> <span></span> <span class="cross"><i
                   class="flaticon-cross"></i></span> </div>
               <ul class="page-dropdown-menu">
                 <li class="dropdown-list"> <router-link to="/"><span>Главная </span> </router-link></li>
@@ -56,16 +56,16 @@
                 <div class="col-12">
                   <div class="some-info">
                     <p class="d-flex align-items-center"> <span class="icon"> <i
-                        class="flaticon-power"></i> </span> Добро пожаловать в MkalaCams Online Shop</p>
+                        class="flaticon-power"></i> </span> Добро пожаловать в EEAGLE EYE Online Shop</p>
                     <div class="right d-flex align-items-center">
                       <router-link v-if="!token" :to="{name:'login.index'}" >Войти </router-link>
-                      <router-link v-if="!token" :to="{name:'registration.index'}"> /Регситрация</router-link>
+                      <router-link v-if="!token" :to="{name:'registration.index'}"> /Регистрация</router-link>
                         <li v-if="token" class="nav-item dropdown">
                             <a style="font-size: 17px" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="flaticon-user" ></i> {{getUserName()}}
                             </a>
                             <ul class="dropdown-menu">
-                                <li  v-if="token" ><router-link class="dropdown-item"  :to="{name:'account.index'}">Личный кабинет</router-link></li>
+                                <li  v-if="token" ><router-link class="dropdown-item" to="/account">Личный кабинет</router-link></li>
                                 <li v-if="isAdmin" ><a class="dropdown-item" href="admin">Админ панель</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li v-if="token"  @click.prevent="logout()" ><a class="dropdown-item" href="#">Выйти</a></li>

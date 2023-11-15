@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
-            $table->id();
-            $table->text('username');
-            $table->text('phone_number');
-            $table->text('image_url');
-            $table->text('total');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->integer('is_ready')->default(0)->nullable();
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('is_ready');
+        });
     }
 };

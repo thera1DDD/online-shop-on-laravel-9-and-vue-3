@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Order\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,9 +63,10 @@ Route::post('/postPosition', \App\Http\Controllers\API\Order\PositionController:
 //myAccount stuff
 Route::group(['prefix' => 'myAccount'], function () {
     Route::get('/getOrders/{usersId}',[App\Http\Controllers\API\MyAccount\IndexController::class,'getOrders']);
+    Route::delete('/deleteOrder/{order}',[App\Http\Controllers\API\MyAccount\IndexController::class,'delete']);
 
 });
-
+Route::post('/telegram-webhook', [\App\Http\Controllers\API\Order\OrderReadyController::class, 'handleTelegramRequest']);
 
 
 

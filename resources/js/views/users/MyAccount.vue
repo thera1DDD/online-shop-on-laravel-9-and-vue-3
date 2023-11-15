@@ -29,43 +29,73 @@
             <div class="col-xl-3 col-lg-4">
               <div class="d-flex align-items-start">
                 <div class="nav my-account-page__menu flex-column nav-pills me-3" id="v-pills-tab"
-                     role="tablist" aria-orientation="vertical"> <button class="nav-link active"
-                                                                         id="v-pills-dashboard-tab" data-bs-toggle="pill" data-bs-target="#v-pills-dashboard"
-                                                                         type="button" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">
-                  <span> Dashboard</span> </button> <button class="nav-link" id="v-pills-orders-tab"
-                                                            data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab"
-                                                            aria-controls="v-pills-orders" aria-selected="false"> <span> Orders</span> </button>
-                  <button class="nav-link" id="v-pills-downloads-tab" data-bs-toggle="pill"
-                          data-bs-target="#v-pills-downloads" type="button" role="tab"
-                          aria-controls="v-pills-downloads" aria-selected="false"> <span> Downloads</span>
-                  </button> <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
-                                    data-bs-target="#v-pills-address" type="button" role="tab"
-                                    aria-controls="v-pills-address" aria-selected="false"> <span> Address</span>
-                  </button> <button class="nav-link" id="v-pills-account-tab" data-bs-toggle="pill"
-                                    data-bs-target="#v-pills-account" type="button" role="tab"
-                                    aria-controls="v-pills-account" aria-selected="false"> <span> Account Details</span>
-                  </button> <button class="nav-link"> <span> Logout </span> </button> </div>
+                     role="tablist" aria-orientation="vertical">
+                                 <button class="nav-link active" id="v-pills-orders-tab"
+                                  data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab"
+                                  aria-controls="v-pills-orders" aria-selected="false"> <span> Заказы</span> </button>
+                                  <button class="nav-link" id="v-pills-account-tab" data-bs-toggle="pill"
+                                  data-bs-target="#v-pills-account" type="button" role="tab"
+                                  aria-controls="v-pills-account" aria-selected="false"> <span> Профиль</span>
+                                  </button> <button @click.prevent="logout()" class="nav-link"> <span> Выход </span> </button> </div>
               </div>
             </div>
             <div class="col-lg-7">
               <div class="tab-content " id="v-pills-tabContent">
                 <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel"
                      aria-labelledby="v-pills-dashboard-tab">
-                  <div class="tabs-content__single">
-                    <h4><span>Hello Admin</span> (Not Admin? Logout)</h4>
-                    <h5>From your account dashboard you can view your <span>Recent Orders, manage your
-                                            shipping</span> and <span>billing addresses,</span> and edit your
-                      <span>Password and account details</span></h5>
-                  </div>
+                    <div class="tabs-content__single">
+                        <h4>Ваши Заказы:</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Телефон</th>
+                                <th scope="col">Сумма</th>
+                                <th scope="col">Дата создания</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(order, index) in orders" :key="order.id">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ order.username }}</td>
+                                <td>{{ order.phone_number }}</td>
+                                <td>{{ order.total }}</td>
+                                <td>{{ order.created_at  }}</td>
+                                <td data-th="" class="hide-me">
+                                    <div @click.prevent="removeOrder(order.id)" class="remove" style="cursor: pointer;"><i class="flaticon-cross"></i></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-orders" role="tabpanel"
                      aria-labelledby="v-pills-orders-tab">
-                  <div class="tabs-content__single">
-                    <h4><span>Hello Admin</span> (Not Admin? Logout)</h4>
-                    <h5>From your account dashboard you can view your <span>Recent Orders, manage your
-                                            shipping</span> and <span>billing addresses,</span> and edit your
-                      <span>Password and account details</span></h5>
-                  </div>
+                    <div class="tabs-content__single">
+                        <h4>Ваши Заказы:</h4>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Имя</th>
+                                <th scope="col">Телефон</th>
+                                <th scope="col">Сумма</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(order, index) in orders" :key="order.id">
+                                <th scope="row">{{ index + 1 }}</th>
+                                <td>{{ order.username }}</td>
+                                <td>{{ order.phone_number }}</td>
+                                <td>{{ order.total }}</td>
+                                <td data-th="" class="hide-me">
+                                    <div @click.prevent="removeOrder(order.id)" class="remove" style="cursor: pointer;"><i class="flaticon-cross"></i></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="v-pills-downloads" role="tabpanel"
                      aria-labelledby="v-pills-downloads-tab">
@@ -121,6 +151,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MyAccount",
 
@@ -138,13 +170,26 @@ export default {
 
       getOrders(){
           this.axios.get(`api/myAccount/getOrders/${this.getUsersId()}`).then(res=>{
-              this.orders = res.data
-              console.log(res.data);
+              this.orders = res.data.data
+              console.log(res.data.data[0]);
           })
       },
         getUsersId(){
             const userId = JSON.parse(localStorage.getItem('userData')) || [];
             return userId[0].id;
+        },
+
+        removeOrder(id){
+            this.axios.delete(`api/myAccount/deleteOrder/${id}`).then(result=>{
+                console.log(result);
+                this.getOrders();
+            })
+        },
+
+        logout(){
+            axios.post('/logout')
+                localStorage.removeItem ('userData')
+                    window.location.href = '/login';
         },
     }
 }
